@@ -8,46 +8,42 @@ import seaborn as sns
 from sklearn.utils import stats
 from scipy import stats
 import my_functions as mf
-
+import plotly.express as px
+import my_functions as mf
+import plotly.graph_objects as go
 
 # %%==============  Define the initial values  =========
 tot_users = 100000
 
-# initiate the total variables for each component (i_* = mf.iaas, c_* = mf.iaas,
-i_total_ram = 0
-i_total_cores = 0
-i_total_disk = 0
-c_total_ram = 0
-c_total_cores = 0
-c_total_disk = 0
+iaas = pd.DataFrame(['vms', 'ram', 'cores', 'disk'])
+caas = pd.DataFrame(['instances', 'ram', 'cores', 'disk'])
 
 # %% ============ Calculate total resources per technology ============
+# IaaS
+iaas['technology'] = 'iaas'
+iaas['nginx'] = mf.iaas.nginx(tot_users)
+iaas['framework'] = mf.iaas.framework(tot_users)
+iaas['rel_db'] = mf.iaas.rel_db(tot_users)
+iaas['memory_db'] = mf.iaas.memory_db(tot_users)
+iaas['totals'] = iaas['nginx'] + iaas['framework'] + iaas['rel_db'] + iaas['memory_db']
 
-i_nginx_resc = mf.iaas.nginx(tot_users)
-i_framework_resc = mf.iaas.framework(tot_users)
-i_rel_db_resc = mf.iaas.rel_db(tot_users)
-i_memory_db_resc = mf.iaas.memory_db(tot_users)
+iaas.rename(columns={0: 'component'}, inplace=True)
 
-c_nginx_resc = mf.iaas.nginx(tot_users)
-c_framework_resc = mf.iaas.framework(tot_users)
-c_rel_db_resc = mf.iaas.rel_db(tot_users)
-c_memory_db_resc = mf.iaas.memory_db(tot_users)
+#%% CaaS
+caas['technology'] = 'caas'
+caas['nginx'] = mf.caas.nginx(tot_users)
+caas['framework'] = mf.caas.framework(tot_users)
+caas['rel_db'] = mf.caas.rel_db(tot_users)
+caas['memory_db'] = mf.caas.memory_db(tot_users)
+caas['totals'] = caas['nginx'] + caas['framework'] + caas['rel_db'] + caas['memory_db']
+caas.rename(columns={0: 'component'}, inplace=True)
 
-i_components_list = [i_nginx_resc, i_framework_resc, i_rel_db_resc, i_memory_db_resc]
-c_components_list = [c_nginx_resc, c_framework_resc, c_rel_db_resc, c_memory_db_resc]
+frames = [iaas, caas]
+df = pd.concat(frames, ignore_index=True, sort=False)
+df = df.transpose()
+headers = df.iloc[0]
+new_df = pd.DataFrame(df.values[1:], columns=headers)
+#%% ================ Visualization ========================
 
-# initiate the total variables for each component
-total_ram = 0
-total_cores = 0
-total_disk = 0
-
-# calculate the totals
-for i in range(0, 4):
-    i_total_ram = i_components_list[i].get('ram') + total_ram
-    i_total_cores = i_components_list[i].get('cores') + total_cores
-    i_total_disk = i_components_list[i].get('disk') + total_disk
-    c_total_ram = i_components_list[i].get('ram') + total_ram
-    c_total_cores = i_components_list[i].get('cores') + total_cores
-    c_total_disk = i_components_list[i].get('disk') + total_disk
 
 

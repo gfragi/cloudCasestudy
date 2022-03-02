@@ -18,7 +18,7 @@ class iaas:
         ram: int = vms * (8 + 1)
         cores: int = vms * (8 + 1)
         disk = vms * (255 + 2.5)
-        return {'vms': vms, 'ram': ram, 'cores': cores, 'disk': disk}
+        return vms, ram, cores, disk
 
     def framework(users: int) -> dict:
         users = users
@@ -26,7 +26,7 @@ class iaas:
         ram: int = vms * (32 + 1)
         cores: int = vms * (8 + 1)
         disk = vms * (600 + 2.5)
-        return {'vms': vms, 'ram': ram, 'cores': cores, 'disk': disk}
+        return vms, ram, cores, disk
 
     def rel_db(users: int) -> dict:
         users = users
@@ -34,7 +34,7 @@ class iaas:
         ram: int = vms * (24 + 1)
         cores: int = vms * (8 + 1)
         disk = vms * (100 + 2.5)
-        return {'vms': vms, 'ram': ram, 'cores': cores, 'disk': disk}
+        return vms, ram, cores, disk
 
     def memory_db(users: int) -> dict:
         users = users
@@ -42,7 +42,7 @@ class iaas:
         ram: int = vms * (8 + 1)
         cores: int = vms * (4 + 1)
         disk = vms * (10 + 2.5)
-        return {'vms': vms, 'ram': ram, 'cores': cores, 'disk': disk}
+        return vms, ram, cores, disk
 
 # Class for CaaS
 class caas:
@@ -52,7 +52,7 @@ class caas:
         ram: int = instances * 8
         cores: int = instances * 8
         disk = instances * 255
-        return {'instances': instances, 'ram': ram, 'cores': cores, 'disk': disk}
+        return instances, ram, cores, disk
 
     def framework(users: int) -> dict:
         users = users
@@ -60,7 +60,7 @@ class caas:
         ram: int = instances * 32
         cores: int = instances * 8
         disk = instances * 600
-        return {'instances': instances, 'ram': ram, 'cores': cores, 'disk': disk}
+        return instances, ram, cores, disk
 
     def rel_db(users: int) -> dict:
         users = users
@@ -68,7 +68,7 @@ class caas:
         ram: int = instances * 24
         cores: int = instances * 8
         disk = instances * 100
-        return {'instances': instances, 'ram': ram, 'cores': cores, 'disk': disk}
+        return instances, ram, cores, disk
 
     def memory_db(users: int) -> dict:
         users = users
@@ -76,4 +76,4 @@ class caas:
         ram: int = instances * 8 + 1
         cores: int = instances * 4
         disk = instances * 10
-        return {'instances': instances, 'ram': ram, 'cores': cores, 'disk': disk}
+        return instances, ram, cores, disk
