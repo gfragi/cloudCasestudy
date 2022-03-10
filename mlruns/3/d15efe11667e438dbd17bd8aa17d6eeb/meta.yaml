@@ -1,0 +1,15 @@
+artifact_uri: file:///home/gfragi/PycharmProjects/cloud22/mlruns/3/d15efe11667e438dbd17bd8aa17d6eeb/artifacts
+end_time: 1646934006206
+entry_point_name: ''
+experiment_id: '3'
+lifecycle_stage: active
+name: ''
+run_id: d15efe11667e438dbd17bd8aa17d6eeb
+run_uuid: d15efe11667e438dbd17bd8aa17d6eeb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1646934005358
+status: 3
+tags: []
+user_id: gfragi
