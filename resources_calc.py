@@ -58,11 +58,11 @@ df = pd.concat(frames, ignore_index=True)
 # %% ================ Visualization ========================
 #
 # Grouped figured with averaged value
-fig = px.histogram(df, x="technology", y=['ram', 'cores', 'disk'], log_y=True,
+fig = px.histogram(df, x="technology", y=['ram', 'cores', 'disk'], log_y=False,
                    barmode='group', text_auto=True, histfunc='avg')
 fig.show()
 fig.write_html("resources_compare.html")
 # %%
-fig2 = px.scatter(df, x="users", y=['ram', 'cores', 'disk'], facet_col='technology', log_y=True)
+fig2 = px.scatter(df, x="users", y=['ram', 'cores', 'disk'], facet_col='technology', log_y=False)
 fig2.show()
 fig2.write_html("users_resources.html")
