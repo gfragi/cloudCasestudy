@@ -33,7 +33,7 @@ class iaas:
         disk = vms * (600 + 2.5)
         technology = 'iaas'
         return vms, ram, cores, disk, technology
-
+ 
     @property
     def rel_db(users: int) -> dict:
         users = users
