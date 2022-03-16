@@ -20,27 +20,27 @@ class iaas:
         ram: int = math.ceil(users / 1024) * 18
         cores: int = math.ceil(users / 1024) * 14
         disk = math.ceil(users / 1024) * 288
-        # vms: int = math.ceil(users / 1024)
+        vms: int = math.ceil(users / 1024)
         technology = 'iaas'
-        return ram, cores, disk, technology
+        return vms, ram, cores, disk, technology
 
     def framework(users: int) -> dict:
         users = users
         ram: int = math.ceil(users / 65535) * 33
         cores: int = math.ceil(users / 65535) * 9
         disk = math.ceil(users / 65535) * (600 + 2.5)
-        # vms: int = math.ceil(users / 65535)
+        vms: int= math.ceil(users / 65535)
         technology = 'iaas'
-        return ram, cores, disk, technology
+        return vms, ram, cores, disk, technology
  
     def rel_db(users: int) -> dict:
         users = users
+        vms: int = math.ceil(users / 5000)
         ram: int = math.ceil(users / 5000) * 25
         cores: int = math.ceil(users / 5000) * 9
         disk = vms * (100 + 2.5)
-        # vms: int = math.ceil(users / 5000)
         technology = 'iaas'
-        return ram, cores, disk, technology
+        return vms, ram, cores, disk, technology
 
     def iaas_total(users: int, vm_type: str) -> list:
         vm_types = ['xsmall', 'small', 'medium', 'large'] 

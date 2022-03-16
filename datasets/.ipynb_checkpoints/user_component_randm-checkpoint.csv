@@ -1,0 +1,8 @@
+,users,component,instances,RAM,CPU,STORAGE,technology
+0,83241,nginx,82,1476,1148,23616,iaas
+1,83241,framework,2,66,18,1205.0,iaas
+2,83241,rel_db,17,425,153,1742.5,iaas
+3,83241,nginx,82,656,656,20910,caas
+4,83241,framework,2,64,16,1200,caas
+5,83241,rel_db,17,408,136,1700,caas
+6,83241,mem_db,9,72,36,90,caas
