@@ -17,28 +17,28 @@ from scipy import stats
 class iaas:
     def nginx(users: int) -> dict: # nginx & redis db
         users = users
-        ram: int = math.ceil(users / 1024) * 18
-        cores: int = math.ceil(users / 1024) * 14
-        disk = math.ceil(users / 1024) * 288
         vms: int = math.ceil(users / 1024)
+        ram: int = vms * 18
+        cores: int = vms * 14
+        disk : int = vms * 288
         technology = 'iaas'
         return vms, ram, cores, disk, technology
 
     def framework(users: int) -> dict:
         users = users
-        ram: int = math.ceil(users / 65535) * 33
-        cores: int = math.ceil(users / 65535) * 9
-        disk = math.ceil(users / 65535) * (600 + 2.5)
         vms: int= math.ceil(users / 65535)
+        ram: int = vms * 33
+        cores: int = vms * 9
+        disk : int = vms * (600 + 2.5)
         technology = 'iaas'
         return vms, ram, cores, disk, technology
  
     def rel_db(users: int) -> dict:
         users = users
         vms: int = math.ceil(users / 5000)
-        ram: int = math.ceil(users / 5000) * 25
-        cores: int = math.ceil(users / 5000) * 9
-        disk = vms * (100 + 2.5)
+        ram: int = vms * 25
+        cores: int = vms * 9
+        disk : int = vms * (100 + 2.5)
         technology = 'iaas'
         return vms, ram, cores, disk, technology
 
@@ -60,8 +60,18 @@ class iaas:
             vms = math.ceil(cores/64)
 
         return vms, ram, cores, disk
-
-
+    
+    def total_inst (users: int) -> dict:
+        users = users
+        nginx: int = math.ceil(users / 1024)
+        framework: int= math.ceil(users / 65535)
+        rel_db: int = math.ceil(users / 5000)
+        instances = nginx + framework + rel_db
+        disk = math.ceil(users / 1024) * 288 + math.ceil(users / 65535) * 602.5 \
+               + math.ceil(users / 5000) * 102.5 + math.ceil(users / 10000) * 12.5
+        return instances, disk
+    
+    
 # Class for CaaS
 # noinspection PyMethodParameters
 class caas:
@@ -119,3 +129,14 @@ class caas:
         elif inst_type == 'large':
             vms = math.ceil(cores/64) 
         return vms, ram, cores, disk
+
+    def total_inst (users: int) -> dict:
+        users = users
+        nginx: int = math.ceil(users / 1024)
+        framework: int= math.ceil(users / 65535)
+        rel_db: int = math.ceil(users / 5000)
+        instances = nginx + framework + rel_db
+        disk = math.ceil(users / 1024) * 255 + math.ceil(users / 65535) * 600 \
+               + math.ceil(users / 5000) * 100 + math.ceil(users / 10000) * 10
+        return instances, disk
+    

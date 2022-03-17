@@ -60,8 +60,18 @@ class iaas:
             vms = math.ceil(cores/64)
 
         return vms, ram, cores, disk
-
-
+    
+    def total_inst (users: int) -> dict:
+        users = users
+        nginx: int = math.ceil(users / 1024)
+        framework: int= math.ceil(users / 65535)
+        rel_db: int = math.ceil(users / 5000)
+        instances = nginx + framework + rel_db
+        disk = math.ceil(users / 1024) * 288 + math.ceil(users / 65535) * 602.5 \
+               + math.ceil(users / 5000) * 102.5 + math.ceil(users / 10000) * 12.5
+        return instances, disk
+    
+    
 # Class for CaaS
 # noinspection PyMethodParameters
 class caas:
@@ -119,3 +129,14 @@ class caas:
         elif inst_type == 'large':
             vms = math.ceil(cores/64) 
         return vms, ram, cores, disk
+
+    def total_inst (users: int) -> dict:
+        users = users
+        nginx: int = math.ceil(users / 1024)
+        framework: int= math.ceil(users / 65535)
+        rel_db: int = math.ceil(users / 5000)
+        instances = nginx + framework + rel_db
+        disk = math.ceil(users / 1024) * 255 + math.ceil(users / 65535) * 600 \
+               + math.ceil(users / 5000) * 100 + math.ceil(users / 10000) * 10
+        return instances, disk
+    
