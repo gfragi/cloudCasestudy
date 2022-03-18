@@ -21,8 +21,10 @@ class iaas:
         ram: int = vms * 18
         cores: int = vms * 14
         disk : int = vms * 288
+        d_type = 'SSD'
         technology = 'iaas'
-        return vms, ram, cores, disk, technology
+        
+        return vms, ram, cores, disk, d_type, technology
 
     def framework(users: int) -> dict:
         users = users
@@ -30,8 +32,9 @@ class iaas:
         ram: int = vms * 33
         cores: int = vms * 9
         disk : int = vms * (600 + 2.5)
+        d_type = 'HDD'
         technology = 'iaas'
-        return vms, ram, cores, disk, technology
+        return vms, ram, cores, disk, d_type, technology
  
     def rel_db(users: int) -> dict:
         users = users
@@ -40,7 +43,8 @@ class iaas:
         cores: int = vms * 9
         disk : int = vms * (100 + 2.5)
         technology = 'iaas'
-        return vms, ram, cores, disk, technology
+        d_type = 'SSD'
+        return vms, ram, cores, disk, d_type, technology
 
     def iaas_total(users: int, vm_type: str) -> list:
         vm_types = ['xsmall', 'small', 'medium', 'large'] 
@@ -81,8 +85,9 @@ class caas:
         ram: int = instances * 8
         cores: int = instances * 8
         disk = instances * 255
+        d_type = 'HDD'
         technology = 'caas'
-        return instances, ram, cores, disk, technology
+        return instances, ram, cores, disk, d_type, technology
 
     def framework(users: int) -> dict:
         users = users
@@ -90,8 +95,9 @@ class caas:
         ram: int = instances * 32
         cores: int = instances * 8
         disk = instances * 600
+        d_type = 'HDD'
         technology = 'caas'
-        return instances, ram, cores, disk, technology
+        return instances, ram, cores, disk, d_type, technology
 
     def rel_db(users: int) -> dict:
         users = users
@@ -99,8 +105,9 @@ class caas:
         ram: int = instances * 24
         cores: int = instances * 8
         disk = instances * 100
+        d_type = 'SSD'
         technology = 'caas'
-        return instances, ram, cores, disk, technology
+        return instances, ram, cores, disk, d_type, technology
 
     def memory_db(users: int) -> dict:
         users = users
@@ -108,8 +115,9 @@ class caas:
         ram: int = instances * 8
         cores: int = instances * 4
         disk = instances * 10
+        d_type = 'SSD'
         technology = 'caas'
-        return instances, ram, cores, disk, technology
+        return instances, ram, cores, disk, d_type, technology
 
     def caas_total(users: int, inst_type: str):
         users = users
