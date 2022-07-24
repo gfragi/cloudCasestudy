@@ -18,9 +18,9 @@ class iaas:
     def nginx(users: int) -> dict: # nginx & redis db
         users = users
         vms: int = math.ceil(users / 1024)
-        ram: int = vms * 18
-        cores: int = vms * 14
-        disk : int = vms * 288
+        ram: int = vms * 17
+        cores: int = vms * 13
+        disk : int = vms * 267.5
         d_type = 'SSD'
         technology = 'iaas'
         
@@ -85,7 +85,7 @@ class caas:
         ram: int = instances * 8
         cores: int = instances * 8
         disk = instances * 255
-        d_type = 'HDD'
+        d_type = 'SSD'
         technology = 'caas'
         return instances, ram, cores, disk, d_type, technology
 
@@ -115,7 +115,7 @@ class caas:
         ram: int = instances * 8
         cores: int = instances * 4
         disk = instances * 10
-        d_type = 'SSD'
+        d_type = 'HDD'
         technology = 'caas'
         return instances, ram, cores, disk, d_type, technology
 

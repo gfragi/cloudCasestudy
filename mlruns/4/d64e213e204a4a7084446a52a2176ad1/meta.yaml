@@ -2,7 +2,7 @@ artifact_uri: file:///home/gfragi/PycharmProjects/cloud22/mlruns/4/d64e213e204a4
 end_time: 1647560491852
 entry_point_name: ''
 experiment_id: '4'
-lifecycle_stage: active
+lifecycle_stage: deleted
 name: ''
 run_id: d64e213e204a4a7084446a52a2176ad1
 run_uuid: d64e213e204a4a7084446a52a2176ad1

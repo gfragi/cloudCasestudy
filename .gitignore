@@ -60,5 +60,9 @@ target/
 
 #venv
 cloud22/
+cloud22.10/
+mlruns/
 
 .idea/
+
+.ipynb_checkpoints/
